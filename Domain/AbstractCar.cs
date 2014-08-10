@@ -2,7 +2,6 @@
 
 namespace Domain
 {
-    // по сути это прокси класс ко всем запчастям
     public class AbstractCar
     {
         //запчасти
@@ -23,6 +22,17 @@ namespace Domain
             this.rudder = rudder;
             this.tank = tank;
             this.transmission = transmission;
+        }
+
+
+        public virtual double Accelerate(int pedalPressPower)
+        {
+            return 10d * ((pedalPressPower - pedal.Reaction) / 100d);
+        }
+
+        public virtual double Break(int pedalPressPower)
+        {
+            return 10d * ((pedalPressPower - pedal.Reaction) / 100d);
         }
     }
 }

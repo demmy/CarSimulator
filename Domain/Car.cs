@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Parts;
 
 namespace Domain
 {
-    internal class Car
+    public class Car
     {
         private readonly AbstractCar car;
 
@@ -20,6 +21,8 @@ namespace Domain
             fuel = car.tank.Capacity;
         }
 
+
+        //TODO: перенести всю логику связанную с деталями в AbstractCar
         #region power
 
         /// <summary>
@@ -34,11 +37,15 @@ namespace Domain
                 throw new ArgumentOutOfRangeException("Педаль можно нажать от нуля до 100%");
             }
 
-            double accelerate = 10*(1/(pedalPressPower - car.pedal.Reaction));
+            double accelerate = car.Accelerate(pedalPressPower);
 
             if (speed + accelerate < car.engine.MaxSpeed)
             {
                 speed += accelerate;
+            }
+            else
+            {
+                speed = car.engine.MaxSpeed;
             }
         }
 
@@ -54,7 +61,7 @@ namespace Domain
                 throw new ArgumentOutOfRangeException("Педаль можно нажать от нуля до 100%");
             }
 
-            double deccelerate = 10*(1/(pedalPressPower - car.pedal.Reaction));
+            double deccelerate = car.Break(pedalPressPower);
 
             if (speed - deccelerate > 0)
             {
@@ -77,7 +84,7 @@ namespace Domain
         /// <returns></returns>
         public void TurnLeft(int degree)
         {
-            if (degree < 0)
+            if (degree < 0 || degree > 360)
             {
                 throw new ArgumentOutOfRangeException("Руль нужно повернуть");
             }
@@ -144,19 +151,20 @@ namespace Domain
         ///     Показания приборной панели
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, string> Panel()
+        public Dictionary<PanelData, string> Panel()
         {
-            var report = new Dictionary<string, string>
+            var report = new Dictionary<PanelData, string>
             {
-                {"speed", speed.ToString()},
-                {"fuel", fuel.ToString()},
-                {"degree", currentRudderDegree.ToString()},
-                {"gear", currentGear.ToString()},
-                {"light", headLight.ToString()},
-                {"max-speed", car.engine.MaxSpeed.ToString()},
-                {"pedal-luft", car.pedal.Reaction.ToString()},
-                {"rudder-luft", car.rudder.Luft.ToString()},
-                {"max-gear", car.transmission.maxGear.ToString()}
+                {PanelData.Type, car.GetType().Name},
+                {PanelData.Speed, speed.ToString()},
+                {PanelData.Fuel, fuel.ToString()},
+                {PanelData.Degree, currentRudderDegree.ToString()},
+                {PanelData.Gear, currentGear.ToString()},
+                {PanelData.Light, headLight.ToString()},
+                {PanelData.MaxSpeed, car.engine.MaxSpeed.ToString()},
+                {PanelData.PedalLuft, car.pedal.Reaction.ToString()},
+                {PanelData.RudderLuft, car.rudder.Luft.ToString()},
+                {PanelData.MaxGear, car.transmission.maxGear.ToString()}
             };
 
             return report;

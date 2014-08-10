@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CarTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleSimulator\ConsoleSimulator.csproj">
+      <Project>{d6fdb521-6e37-40cb-aadd-d58802340cdc}</Project>
+      <Name>ConsoleSimulator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{6f57a268-2757-40a3-b8be-3d14e357dd54}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VW\VW.csproj">
+      <Project>{c1e77f93-f223-4038-8af8-ba44c1bcf609}</Project>
+      <Name>VW</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZAZ\ZAZ.csproj">
+      <Project>{a2ff167d-b940-462a-9e7a-724c4f07f652}</Project>
+      <Name>ZAZ</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,7 +3,7 @@ using Domain.Parts;
 
 namespace VW
 {
-    internal class VWCar : AbstractCar
+    public class VWCar : AbstractCar
     {
         public VWCar(
             AbstractEngine engine,

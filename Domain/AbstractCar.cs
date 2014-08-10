@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Parts;
+﻿using Domain.Parts;
 
 namespace Domain
 {
@@ -15,7 +14,8 @@ namespace Domain
         public AbstractTransmission transmission;
 
 
-        public AbstractCar(AbstractEngine engine, AbstractPanel panel, AbstractPedal pedal, AbstractRudder rudder, AbstractTank tank, AbstractTransmission transmission)
+        public AbstractCar(AbstractEngine engine, AbstractPanel panel, AbstractPedal pedal, AbstractRudder rudder,
+            AbstractTank tank, AbstractTransmission transmission)
         {
             this.engine = engine;
             this.panel = panel;

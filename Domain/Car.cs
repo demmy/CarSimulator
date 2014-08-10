@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
-    class Car
+    internal class Car
     {
-        private AbstractCar car;
+        private readonly AbstractCar car;
 
         //состояния
-        private double speed = 0;
-        private double currentRudderDegree = 0;
-        private int currentGear = 0;
-        private double fuel = 0;
-        private bool headLight = false;
+        private readonly double fuel;
+        private int currentGear;
+        private double currentRudderDegree;
+        private bool headLight;
+        private double speed;
 
         public Car(IFactory factory)
         {
@@ -24,8 +21,9 @@ namespace Domain
         }
 
         #region power
+
         /// <summary>
-        /// Ускорение
+        ///     Ускорение
         /// </summary>
         /// <param name="pedalPressPower">Сила нажатия педали газа в процентах</param>
         /// <returns></returns>
@@ -38,16 +36,14 @@ namespace Domain
 
             double accelerate = 10*(1/(pedalPressPower - car.pedal.Reaction));
 
-            if (speed+accelerate < car.engine.MaxSpeed)
+            if (speed + accelerate < car.engine.MaxSpeed)
             {
                 speed += accelerate;
             }
-
-
         }
 
         /// <summary>
-        /// Торможение
+        ///     Торможение
         /// </summary>
         /// <param name="pedalPressPower">Сила нажатия педали тормоз в процентах</param>
         /// <returns></returns>
@@ -58,9 +54,9 @@ namespace Domain
                 throw new ArgumentOutOfRangeException("Педаль можно нажать от нуля до 100%");
             }
 
-            double deccelerate = 10 * (1 / (pedalPressPower - car.pedal.Reaction));
+            double deccelerate = 10*(1/(pedalPressPower - car.pedal.Reaction));
 
-            if (speed-deccelerate > 0)
+            if (speed - deccelerate > 0)
             {
                 speed -= deccelerate;
             }
@@ -69,11 +65,13 @@ namespace Domain
                 speed = 0;
             }
         }
+
         #endregion
 
         #region Turns
+
         /// <summary>
-        /// Поворот в лево
+        ///     Поворот в лево
         /// </summary>
         /// <param name="degree">Угол поворота в градусах</param>
         /// <returns></returns>
@@ -91,12 +89,10 @@ namespace Domain
                 tmpDegree = 360 + tmpDegree;
             }
             currentRudderDegree = tmpDegree;
-
-
         }
 
         /// <summary>
-        /// Поворот в право
+        ///     Поворот в право
         /// </summary>
         /// <param name="degree">Угол поворота в градусах</param>
         /// <returns></returns>
@@ -112,15 +108,15 @@ namespace Domain
             {
                 currentRudderDegree -= 360;
             }
-
         }
+
         #endregion
 
         #region Transmission
 
         public void GearUp()
         {
-            if (++currentGear>car.transmission.maxGear)
+            if (++currentGear > car.transmission.maxGear)
             {
                 currentGear = car.transmission.maxGear;
             }
@@ -137,7 +133,7 @@ namespace Domain
         #endregion
 
         /// <summary>
-        /// Фары
+        ///     Фары
         /// </summary>
         public void LightSwitch()
         {
@@ -145,10 +141,10 @@ namespace Domain
         }
 
         /// <summary>
-        /// Показания приборной панели
+        ///     Показания приборной панели
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string,string> Panel()
+        public Dictionary<string, string> Panel()
         {
             var report = new Dictionary<string, string>
             {

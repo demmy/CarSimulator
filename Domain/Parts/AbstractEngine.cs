@@ -6,7 +6,7 @@
 
         protected AbstractEngine(int maxsspeed)
         {
-            this.MaxSpeed = maxsspeed;
+            MaxSpeed = maxsspeed;
         }
     }
 }

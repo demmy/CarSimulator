@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Parts;
+﻿using Domain.Parts;
 
 namespace VW.Parts
 {
-    class VWEngine : AbstractEngine
+    internal class VWEngine : AbstractEngine
     {
         public VWEngine() : base(220)
         {
         }
-
     }
 }

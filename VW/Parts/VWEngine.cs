@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CarBuilder.Abstract.Parts;
+using Domain.Parts;
 
 namespace VW.Parts
 {
-    class Engine : AbstractEngine
+    class VWEngine : AbstractEngine
     {
-        public Engine() : base(220)
+        public VWEngine() : base(220)
         {
         }
 

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Parts;
 
-namespace Domain
+namespace VW.Parts
 {
-    public class CarFactory
+    public class VWPanel:AbstractPanel
     {
+
     }
 }

@@ -39,7 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parts\Engine.cs" />
+    <Compile Include="Parts\VWEngine.cs" />
+    <Compile Include="Parts\VWPanel.cs" />
+    <Compile Include="Parts\VWPedal.cs" />
+    <Compile Include="Parts\VWRudder.cs" />
+    <Compile Include="Parts\VWTank.cs" />
+    <Compile Include="Parts\VWTransmission.cs" />
+    <Compile Include="VWCar.cs" />
     <Compile Include="VWFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

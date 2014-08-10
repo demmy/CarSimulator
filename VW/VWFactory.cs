@@ -1,43 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CarBuilder.Abstract.Parts;
-using Domain;
+﻿using Domain;
+using Domain.Parts;
+using VW.Parts;
 
 namespace VW
 {
     public class VWFactory : IFactory
     {
-        public AbstractEngine CreateEngine()
-        {
-            throw new NotImplementedException();
-        }
+        private readonly AbstractEngine engine = new VWEngine();
+        private readonly AbstractPanel panel = new VWPanel();
+        private readonly AbstractPedal pedal = new VWPedal();
+        private readonly AbstractRudder rudder = new VWRudder();
+        private readonly AbstractTank tank = new VWTank();
+        private readonly AbstractTransmission transmission = new VWTransmission();
 
-        public AbstractPanel CreatePanel()
-        {
-            throw new NotImplementedException();
-        }
 
-        public AbstractPedal CreatePedal()
+        public AbstractCar CreateCar()
         {
-            throw new NotImplementedException();
-        }
-
-        public AbstractRudder CreateRudder()
-        {
-            throw new NotImplementedException();
-        }
-
-        public AbstractTank CreateTank()
-        {
-            throw new NotImplementedException();
-        }
-
-        public AbstractTransmission CreateTransmission()
-        {
-            throw new NotImplementedException();
+            return new VWCar(engine, panel, pedal, rudder, tank, transmission);
         }
     }
 }

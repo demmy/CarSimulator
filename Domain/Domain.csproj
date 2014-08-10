@@ -39,9 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CarFactory.cs" />
+    <Compile Include="AbstractCar.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="IFactory.cs" />
-    <Compile Include="Parts\AbstractCar.cs" />
     <Compile Include="Parts\AbstractEngine.cs" />
     <Compile Include="Parts\AbstractPanel.cs" />
     <Compile Include="Parts\AbstractPedal.cs" />

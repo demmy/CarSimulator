@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CarBuilder.Abstract.Parts
+﻿namespace Domain.Parts
 {
     public abstract class AbstractPedal
     {
-        public int Reaction { get; private set; }
+        public readonly int Reaction;
+
+        protected AbstractPedal(int reaction)
+        {
+            Reaction = reaction;
+        }
     }
 }

@@ -8,8 +8,8 @@ using VW;
 namespace UnitTests
 {
     [TestFixture]
-    [Category("Car")]
-    public class CarTest
+    [Category("VWCar")]
+    public class VWCarTest
     {
         [Test]
         [Category("Drive")]

@@ -39,8 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ZAZCar.cs" />
+    <Compile Include="Parts\ZAZEngine.cs" />
+    <Compile Include="Parts\ZAZPanel.cs" />
+    <Compile Include="Parts\ZAZPedal.cs" />
+    <Compile Include="Parts\ZAZRudder.cs" />
+    <Compile Include="Parts\ZAZTank.cs" />
+    <Compile Include="Parts\ZAZTransmission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZAZFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

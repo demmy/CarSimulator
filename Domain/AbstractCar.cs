@@ -4,6 +4,7 @@ namespace Domain
 {
     public class AbstractCar
     {
+        //TODO:Расход бензина и заправка
         //запчасти
         public AbstractEngine engine;
         public AbstractPanel panel;

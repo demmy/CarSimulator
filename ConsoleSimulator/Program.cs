@@ -7,15 +7,13 @@ using ZAZ;
 
 namespace ConsoleSimulator
 {
-    class Program
+    internal class Program
     {
-        
-
         private static void Main(string[] args)
         {
-            List<Car> cars = new List<Car>();
+            var cars = new List<Car>();
             bool isExit = false;
-            
+
             do
             {
                 switch (UIHelper.DrawMenu(new List<string> {"Создать автомобиль", "Покататься", "Выход"}))
@@ -24,12 +22,7 @@ namespace ConsoleSimulator
                         CreateNewCar(cars);
                         break;
                     case 2:
-                        //TODO:remove this!
-                        //only in develop!!!
-                        Ride.Start(new Car(new VWFactory()){Name = "Test"});
-                        break;
-
-                        if (cars.Capacity<1)
+                        if (cars.Capacity < 1)
                         {
                             break;
                         }
@@ -49,7 +42,7 @@ namespace ConsoleSimulator
 
         private static void CreateNewCar(List<Car> cars)
         {
-            int supplier = UIHelper.DrawMenu(Enum.GetNames(typeof(Suppliers)).ToList());
+            int supplier = UIHelper.DrawMenu(Enum.GetNames(typeof (Suppliers)).ToList());
             Car car;
 
             switch (supplier)

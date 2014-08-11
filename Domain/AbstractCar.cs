@@ -19,10 +19,8 @@ namespace Domain
         private double currentRudderDegree;
         private bool headLight;
         private AbstractPanel panel;
-        private double speed;
+        public double Speed;
         private AbstractTank tank;
-
-
 
         public AbstractCar(AbstractEngine engine, AbstractPanel panel, AbstractPedal pedal, AbstractRudder rudder,
             AbstractTank tank, AbstractTransmission transmission)
@@ -47,13 +45,13 @@ namespace Domain
         {
             double accelerate = 10d*((pedalPressPower - pedal.Reaction)/100d);
 
-            if (speed + accelerate < engine.MaxSpeed)
+            if (Speed + accelerate < engine.MaxSpeed)
             {
-                speed += accelerate;
+                Speed += accelerate;
             }
             else
             {
-                speed = engine.MaxSpeed;
+                Speed = engine.MaxSpeed;
             }
         }
 
@@ -71,13 +69,13 @@ namespace Domain
 
             double deccelerate = 10d*((pedalPressPower - pedal.Reaction)/100d);
 
-            if (speed - deccelerate > 0)
+            if (Speed - deccelerate > 0)
             {
-                speed -= deccelerate;
+                Speed -= deccelerate;
             }
             else
             {
-                speed = 0;
+                Speed = 0;
             }
         }
 
@@ -164,7 +162,7 @@ namespace Domain
             var report = new Dictionary<PanelData, string>
             {
                 {PanelData.Type, GetType().Name},
-                {PanelData.Speed, speed.ToString()},
+                {PanelData.Speed, Speed.ToString()},
                 {PanelData.Fuel, fuel.ToString()},
                 {PanelData.Degree, currentRudderDegree.ToString()},
                 {PanelData.Gear, currentGear.ToString()},

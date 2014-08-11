@@ -7,6 +7,7 @@ namespace Domain
     public class Car
     {
         private readonly AbstractCar car;
+        public string Name;
 
 
         public Car(IFactory factory)
@@ -110,6 +111,11 @@ namespace Domain
         public Dictionary<PanelData, string> Panel()
         {
             return car.Panel();
+        }
+
+        public int GetSpeed()
+        {
+            return (int)car.Speed;
         }
     }
 }

@@ -64,6 +64,20 @@ namespace UnitTests
 
         [Test]
         [Category("Drive")]
+        public void ShouldHeadlightSwitch()
+        {
+            IFactory factory = new VWFactory();
+            var car = new Car(factory);
+            Dictionary<PanelData, string> report = car.Panel();
+
+            Assert.That("False", Is.EqualTo(report[PanelData.Light]));
+            car.LightSwitch();
+            report = car.Panel();
+            Assert.That("True", Is.EqualTo(report[PanelData.Light]));
+        }
+
+        [Test]
+        [Category("Drive")]
         public void ShouldStopOnMaxSpeedAndStop()
         {
             IFactory factory = new VWFactory();
@@ -102,32 +116,18 @@ namespace UnitTests
 
         [Test]
         [Category("Drive")]
-        public void ShouldHeadlightSwitch()
-        {
-            IFactory factory = new VWFactory();
-            var car = new Car(factory);
-            Dictionary<PanelData, string> report = car.Panel();
-
-            Assert.That("False",Is.EqualTo(report[PanelData.Light]));
-            car.LightSwitch();
-            report = car.Panel();
-            Assert.That("True", Is.EqualTo(report[PanelData.Light]));
-        }
-
-        [Test]
-        [Category("Drive")]
         public void ShouldTransmissionChangedInRange()
         {
             IFactory factory = new VWFactory();
             var car = new Car(factory);
             Dictionary<PanelData, string> report = car.Panel();
 
-            Assert.That("0",Is.EqualTo(report[PanelData.Gear]));
+            Assert.That("0", Is.EqualTo(report[PanelData.Gear]));
 
             //понижаем передачу ниже нулевой
             car.GearDown();
             report = car.Panel();
-            Assert.That("0",Is.EqualTo(report[PanelData.Gear]));
+            Assert.That("0", Is.EqualTo(report[PanelData.Gear]));
 
             //повышаем передачу 100 раз
             for (int i = 0; i < 100; i++)
@@ -137,5 +137,5 @@ namespace UnitTests
             report = car.Panel();
             Assert.That(report[PanelData.MaxGear], Is.EqualTo(report[PanelData.Gear]));
         }
-    } 
+    }
 }

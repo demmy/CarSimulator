@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Parts;
+﻿using Domain.Parts;
 
 namespace ZAZ.Parts
 {
-    class ZAZTransmission :AbstractTransmission
+    internal class ZAZTransmission : AbstractTransmission
     {
         public ZAZTransmission() : base(4)
         {

@@ -51,7 +51,7 @@ namespace UnitTests
 
             Dictionary<PanelData, string> report = car.Panel();
 
-            Assert.That(report[PanelData.Type], Is.EqualTo(typeof(ZAZCar).Name));
+            Assert.That(report[PanelData.Type], Is.EqualTo(typeof (ZAZCar).Name));
             Assert.That(report[PanelData.Speed], Is.EqualTo(0.ToString()));
             Assert.That(report[PanelData.Fuel], Is.EqualTo(80.ToString()));
             Assert.That(report[PanelData.Degree], Is.EqualTo(0.ToString()));
@@ -60,6 +60,20 @@ namespace UnitTests
             Assert.That(report[PanelData.MaxSpeed], Is.EqualTo(180.ToString()));
             Assert.That(report[PanelData.RudderLuft], Is.EqualTo(10.ToString()));
             Assert.That(report[PanelData.MaxGear], Is.EqualTo(4.ToString()));
+        }
+
+        [Test]
+        [Category("Drive")]
+        public void ShouldHeadlightSwitch()
+        {
+            IFactory factory = new ZAZFactory();
+            var car = new Car(factory);
+            Dictionary<PanelData, string> report = car.Panel();
+
+            Assert.That("False", Is.EqualTo(report[PanelData.Light]));
+            car.LightSwitch();
+            report = car.Panel();
+            Assert.That("True", Is.EqualTo(report[PanelData.Light]));
         }
 
         [Test]
@@ -98,20 +112,6 @@ namespace UnitTests
             Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(-10));
             Assert.Throws<ArgumentOutOfRangeException>(() => car.PressBreak(120));
             Assert.Throws<ArgumentOutOfRangeException>(() => car.PressBreak(-10));
-        }
-
-        [Test]
-        [Category("Drive")]
-        public void ShouldHeadlightSwitch()
-        {
-            IFactory factory = new ZAZFactory();
-            var car = new Car(factory);
-            Dictionary<PanelData, string> report = car.Panel();
-
-            Assert.That("False", Is.EqualTo(report[PanelData.Light]));
-            car.LightSwitch();
-            report = car.Panel();
-            Assert.That("True", Is.EqualTo(report[PanelData.Light]));
         }
 
         [Test]

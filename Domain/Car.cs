@@ -8,21 +8,12 @@ namespace Domain
     {
         private readonly AbstractCar car;
 
-        //состояния
-        private readonly double fuel;
-        private int currentGear;
-        private double currentRudderDegree;
-        private bool headLight;
-        private double speed;
 
         public Car(IFactory factory)
         {
             car = factory.CreateCar();
-            fuel = car.tank.Capacity;
         }
 
-
-        //TODO: перенести всю логику связанную с деталями в AbstractCar
         #region power
 
         /// <summary>
@@ -36,17 +27,7 @@ namespace Domain
             {
                 throw new ArgumentOutOfRangeException("Педаль можно нажать от нуля до 100%");
             }
-
-            double accelerate = car.Accelerate(pedalPressPower);
-
-            if (speed + accelerate < car.engine.MaxSpeed)
-            {
-                speed += accelerate;
-            }
-            else
-            {
-                speed = car.engine.MaxSpeed;
-            }
+            car.Accelerate(pedalPressPower);
         }
 
         /// <summary>
@@ -61,16 +42,7 @@ namespace Domain
                 throw new ArgumentOutOfRangeException("Педаль можно нажать от нуля до 100%");
             }
 
-            double deccelerate = car.Break(pedalPressPower);
-
-            if (speed - deccelerate > 0)
-            {
-                speed -= deccelerate;
-            }
-            else
-            {
-                speed = 0;
-            }
+            car.PressBreak(pedalPressPower);
         }
 
         #endregion
@@ -88,14 +60,7 @@ namespace Domain
             {
                 throw new ArgumentOutOfRangeException("Руль нужно повернуть");
             }
-            double tmpDegree = currentRudderDegree - (degree - car.rudder.Luft);
-
-            if (tmpDegree < 0)
-            {
-                // прибавляя отрицательный угол к 360 мы по факту отнимаем модуль
-                tmpDegree = 360 + tmpDegree;
-            }
-            currentRudderDegree = tmpDegree;
+            car.TurnLeft(degree);
         }
 
         /// <summary>
@@ -109,12 +74,7 @@ namespace Domain
             {
                 throw new ArgumentOutOfRangeException("Руль нужно повернуть");
             }
-            double tmpDegree = currentRudderDegree + (degree - car.rudder.Luft);
-
-            if (tmpDegree > 360)
-            {
-                currentRudderDegree -= 360;
-            }
+            car.TurnRight(degree);
         }
 
         #endregion
@@ -123,28 +83,24 @@ namespace Domain
 
         public void GearUp()
         {
-            if (++currentGear > car.transmission.maxGear)
-            {
-                currentGear = car.transmission.maxGear;
-            }
+            car.GearUp();
         }
 
         public void GearDown()
         {
-            if (--currentGear < 0)
-            {
-                currentGear = 0;
-            }
+            car.GearDown();
         }
 
         #endregion
+
+        //TODO: перенести всю логику связанную с деталями в AbstractCar
 
         /// <summary>
         ///     Фары
         /// </summary>
         public void LightSwitch()
         {
-            headLight = !headLight;
+            car.LightSwitch();
         }
 
         /// <summary>
@@ -153,21 +109,7 @@ namespace Domain
         /// <returns></returns>
         public Dictionary<PanelData, string> Panel()
         {
-            var report = new Dictionary<PanelData, string>
-            {
-                {PanelData.Type, car.GetType().Name},
-                {PanelData.Speed, speed.ToString()},
-                {PanelData.Fuel, fuel.ToString()},
-                {PanelData.Degree, currentRudderDegree.ToString()},
-                {PanelData.Gear, currentGear.ToString()},
-                {PanelData.Light, headLight.ToString()},
-                {PanelData.MaxSpeed, car.engine.MaxSpeed.ToString()},
-                {PanelData.PedalLuft, car.pedal.Reaction.ToString()},
-                {PanelData.RudderLuft, car.rudder.Luft.ToString()},
-                {PanelData.MaxGear, car.transmission.maxGear.ToString()}
-            };
-
-            return report;
+            return car.Panel();
         }
     }
 }

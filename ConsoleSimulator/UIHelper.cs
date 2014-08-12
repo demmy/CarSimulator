@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ConsoleSimulator
 {
-    internal class UIHelper
+    internal class UiHelper
     {
         public static int DrawMenu(List<string> mainMenu)
         {

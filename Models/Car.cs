@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Interfaces;
 using Interfaces.Parts;
 
@@ -127,36 +128,37 @@ namespace Models
 
         public Dictionary<EPanelData, string> PanelData()
         {
-            preparePanel();
+            PreparePanel();
 
-            var result = new Dictionary<EPanelData, string>();
-
-            result.Add(EPanelData.Name, Panel.Name);
-            result.Add(EPanelData.Speed, Panel.Speed);
-            result.Add(EPanelData.MaxSpeed, Panel.MaxSpeed);
-            result.Add(EPanelData.Gear, Panel.Gear);
-            result.Add(EPanelData.MaxGear, Panel.MaxGear);
-            result.Add(EPanelData.PedalLuft, Panel.PedalLuft);
-            result.Add(EPanelData.RudderLuft, Panel.RudderLuft);
-            result.Add(EPanelData.Light, Panel.Light);
-            result.Add(EPanelData.Fuel, Panel.Fuel);
-            result.Add(EPanelData.Degree, Panel.Degree);
+            var result = new Dictionary<EPanelData, string>
+            {
+                {EPanelData.Name, Panel.Name},
+                {EPanelData.Speed, Panel.Speed},
+                {EPanelData.MaxSpeed, Panel.MaxSpeed},
+                {EPanelData.Gear, Panel.Gear},
+                {EPanelData.MaxGear, Panel.MaxGear},
+                {EPanelData.PedalLuft, Panel.PedalLuft},
+                {EPanelData.RudderLuft, Panel.RudderLuft},
+                {EPanelData.Light, Panel.Light},
+                {EPanelData.Fuel, Panel.Fuel},
+                {EPanelData.Degree, Panel.Degree}
+            };
 
             return result;
         }
 
-        private void preparePanel()
+        private void PreparePanel()
         {
             Panel.Name = Name;
-            Panel.Speed = CurrentSpeed.ToString();
-            Panel.Degree = CurrentRudderDegree.ToString();
-            Panel.Gear = CurrentGear.ToString();
+            Panel.Speed = CurrentSpeed.ToString(CultureInfo.InvariantCulture);
+            Panel.Degree = CurrentRudderDegree.ToString(CultureInfo.InvariantCulture);
+            Panel.Gear = CurrentGear.ToString(CultureInfo.InvariantCulture);
             Panel.Light = (HeadLight) ? "ON" : "OFF";
-            Panel.MaxSpeed = Engine.MaxSpeed.ToString();
-            Panel.MaxGear = Transmission.MaxGear.ToString();
-            Panel.PedalLuft = Pedal.Luft.ToString();
-            Panel.RudderLuft = Rudder.Luft.ToString();
-            Panel.Fuel = Fuel.ToString();
+            Panel.MaxSpeed = Engine.MaxSpeed.ToString(CultureInfo.InvariantCulture);
+            Panel.MaxGear = Transmission.MaxGear.ToString(CultureInfo.InvariantCulture);
+            Panel.PedalLuft = Pedal.Luft.ToString(CultureInfo.InvariantCulture);
+            Panel.RudderLuft = Rudder.Luft.ToString(CultureInfo.InvariantCulture);
+            Panel.Fuel = Fuel.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

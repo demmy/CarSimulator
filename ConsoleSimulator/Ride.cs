@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Interfaces;
 using Interfaces.Parts;
-using Models;
 
 namespace ConsoleSimulator
 {
     public static class Ride
     {
-        public static void Start(Car car)
+        public static void Start(ICar car)
         {
             bool isEnd = false;
             do
@@ -23,19 +23,19 @@ namespace ConsoleSimulator
                     "Повернуть направо",
                     "Данные с приборной панели",
                 };
-                if (car.CurrentSpeed == 0)
+                if (Math.Abs(car.CurrentSpeed) < 0)
                 {
                     menuMain.Add("Выход");
                 }
 
-                int choice = UIHelper.DrawMenu(menuMain);
+                int choice = UiHelper.DrawMenu(menuMain);
                 switch (choice)
                 {
                     case 1:
-                        car.Accelerate(UIHelper.GetInt("Сила нажатия педали 1-100", 1, 100));
+                        car.Accelerate(UiHelper.GetInt("Сила нажатия педали 1-100", 1, 100));
                         break;
                     case 2:
-                        car.Break(UIHelper.GetInt("Сила нажатия педали 1-100", 1, 100));
+                        car.Break(UiHelper.GetInt("Сила нажатия педали 1-100", 1, 100));
                         break;
                     case 3:
                         car.LightSwitch();
@@ -47,10 +47,10 @@ namespace ConsoleSimulator
                         car.GearDown();
                         break;
                     case 6:
-                        car.TurnLeft(UIHelper.GetInt("Угол поворота 1-360", 1, 360));
+                        car.TurnLeft(UiHelper.GetInt("Угол поворота 1-360", 1, 360));
                         break;
                     case 7:
-                        car.TurnRight(UIHelper.GetInt("Угол поворота 1-360", 1, 360));
+                        car.TurnRight(UiHelper.GetInt("Угол поворота 1-360", 1, 360));
                         break;
                     case 8:
                         Dictionary<EPanelData, string> report = car.PanelData();
@@ -64,7 +64,7 @@ namespace ConsoleSimulator
                     case 9:
                         isEnd = true;
                         break;
-                        
+
                     default:
                         Console.WriteLine("OOPS!");
                         break;

@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMW", "BMW\BMW.csproj", "{F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZAZ", "ZAZ\ZAZ.csproj", "{C817AAE8-804F-4CB6-BA67-C6F79AB5DEC0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PartSuppliers", "PartSuppliers", "{2DE9584C-6055-493F-B639-74E2943AF462}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,5 +51,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C817AAE8-804F-4CB6-BA67-C6F79AB5DEC0} = {2DE9584C-6055-493F-B639-74E2943AF462}
+		{F34F667A-3F07-414D-8FBC-6D395360EC13} = {2DE9584C-6055-493F-B639-74E2943AF462}
 	EndGlobalSection
 EndGlobal

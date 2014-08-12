@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2FF167D-B940-462A-9E7A-724C4F07F652}</ProjectGuid>
+    <ProjectGuid>{C817AAE8-804F-4CB6-BA67-C6F79AB5DEC0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ZAZ</RootNamespace>
@@ -39,21 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ZAZCar.cs" />
-    <Compile Include="Parts\ZAZEngine.cs" />
-    <Compile Include="Parts\ZAZPanel.cs" />
-    <Compile Include="Parts\ZAZPedal.cs" />
-    <Compile Include="Parts\ZAZRudder.cs" />
-    <Compile Include="Parts\ZAZTank.cs" />
-    <Compile Include="Parts\ZAZTransmission.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZAZFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
-      <Project>{0a2cdbae-86e6-4022-96d3-995c965be5aa}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

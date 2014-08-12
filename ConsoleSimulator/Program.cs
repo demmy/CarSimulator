@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain;
-using VW;
-using ZAZ;
+using BMW;
+using Models;
 
 namespace ConsoleSimulator
 {
@@ -47,11 +46,8 @@ namespace ConsoleSimulator
 
             switch (supplier)
             {
-                case (int) Suppliers.VW:
-                    car = new Car(new VWFactory());
-                    break;
-                case (int) Suppliers.ZAZ:
-                    car = new Car(new ZAZFactory());
+                case (int) Suppliers.BMW:
+                    car = new Car(new BMWFactory());
                     break;
                 default:
                     return;

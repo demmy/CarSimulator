@@ -16,6 +16,7 @@ namespace Models
             Tank = factory.CreateTank();
             Transmission = factory.CreateTransmission();
 
+            Name = "";
             CurrentGear = 0;
             CurrentSpeed = 0;
             CurrentRudderDegree = 0;
@@ -100,6 +101,22 @@ namespace Models
             if (tmpDegree > 360)
             {
                 CurrentRudderDegree -= 360;
+            }
+        }
+
+        public void GearUp()
+        {
+            if (++CurrentGear > Transmission.MaxGear)
+            {
+                CurrentGear = Transmission.MaxGear;
+            }
+        }
+
+        public void GearDown()
+        {
+            if (--CurrentGear < 0)
+            {
+                CurrentGear = 0;
             }
         }
 

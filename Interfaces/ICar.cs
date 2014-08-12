@@ -26,6 +26,9 @@ namespace Interfaces
         void TurnLeft(int degree);
         void TurnRight(int degree);
 
+        void GearUp();
+        void GearDown();
+
         void LightSwitch();
 
         Dictionary<EPanelData, string> PanelData();

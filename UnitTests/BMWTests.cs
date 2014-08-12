@@ -1,6 +1,9 @@
-﻿using BMW;
+﻿using System;
+using System.Collections.Generic;
+using BMW;
 using BMW.Parts;
 using Interfaces;
+using Interfaces.Parts;
 using Models;
 using NUnit.Framework;
 
@@ -10,32 +13,7 @@ namespace UnitTests
     [Category("BMW")]
     internal class BMWTests
     {
-        [Test]
-        [Category("Drive")]
-        public void ShouldAccelerateAndBreak()
-        {
-            ICar car = new Car(new BMWFactory());
 
-            car.Accelerate(100);
-            car.Accelerate(100);
-
-            Assert.That(19d, Is.EqualTo(car.CurrentSpeed));
-
-            car.Break(100);
-
-            Assert.That(9.5d, Is.EqualTo(car.CurrentSpeed));
-
-            car.Break(100);
-
-            Assert.That(0.0, Is.EqualTo(car.CurrentSpeed));
-
-            car.Accelerate(50);
-            car.Accelerate(50);
-            car.Accelerate(50);
-            car.Accelerate(50);
-
-            Assert.That(18d, Is.EqualTo(car.CurrentSpeed));
-        }
 
         [Test]
         [Category("Creation")]
@@ -66,5 +44,113 @@ namespace UnitTests
             Assert.That(5, Is.EqualTo(car.Rudder.Luft));
             Assert.That(6, Is.EqualTo(car.Transmission.MaxGear));
         }
+
+        [Test]
+        [Category("Drive")]
+        public void ShouldAsselerateAndBrakeControlledZeroAndMaxSpeed()
+        {
+            ICar car = new Car(new BMWFactory());
+
+            car.Accelerate(100);
+            car.Accelerate(100);
+
+            Assert.That(19d, Is.EqualTo(car.CurrentSpeed));
+
+            car.Break(100);
+
+            Assert.That(9.5d, Is.EqualTo(car.CurrentSpeed));
+
+            car.Break(100);
+
+            Assert.That(0.0, Is.EqualTo(car.CurrentSpeed));
+
+            car.Accelerate(50);
+            car.Accelerate(50);
+            car.Accelerate(50);
+            car.Accelerate(50);
+
+            Assert.That(18d, Is.EqualTo(car.CurrentSpeed));
+
+
+            for (int i = 0; i < 1000; i++)
+            {
+                car.Accelerate(100);
+            }
+
+            Assert.That(car.Engine.MaxSpeed, Is.EqualTo(car.CurrentSpeed));
+            
+            for (int i = 0; i < 5000; i++)
+            {
+                car.Break(100);
+            }
+
+            Assert.That(0.0, Is.EqualTo(car.CurrentSpeed));
+        }
+
+        [Test]
+        [Category("Drive")]
+        public void ShouldThrowErrorWhenPressValueIncorrect()
+        {
+            IFactory factory = new BMWFactory();
+            var car = new Car(factory);
+            Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(120));
+            Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(-10));
+            Assert.Throws<ArgumentOutOfRangeException>(() => car.Break(120));
+            Assert.Throws<ArgumentOutOfRangeException>(() => car.Break(-10));
+        }
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldTransmissionChangedInRange()
+        {
+            IFactory factory = new BMWFactory();
+            var car = new Car(factory);
+
+            //понижаем передачу ниже нулевой
+            car.GearDown();
+            Assert.That(0, Is.EqualTo(car.CurrentGear));
+
+            //повышаем передачу 100 раз
+            for (int i = 0; i < 100; i++)
+            {
+                car.GearUp();
+            }
+            Assert.That(car.Transmission.MaxGear, Is.EqualTo(car.CurrentGear));
+        }
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldHeadlightSwitch()
+        {
+            IFactory factory = new BMWFactory();
+            var car = new Car(factory);
+
+            Assert.False(car.HeadLight);
+
+            car.LightSwitch();
+
+            Assert.True(car.HeadLight);
+
+            car.LightSwitch();
+
+            Assert.False(car.HeadLight);
+        }
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldReturnPanelDataSomeTypeNotNull()
+        {
+            IFactory factory = new BMWFactory();
+            var car = new Car(factory);
+
+            var report = car.PanelData();
+
+            foreach (var item in report)
+            {
+                Assert.IsInstanceOf<EPanelData>(item.Key);
+                Assert.IsInstanceOf<string>(item.Value);
+            }
+        }
+
     }
 }

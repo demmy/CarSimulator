@@ -49,20 +49,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{6F57A268-2757-40A3-B8BE-3D14E357DD54}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VW\VW.csproj">
-      <Project>{C1E77F93-F223-4038-8AF8-BA44C1BCF609}</Project>
-      <Name>VW</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ZAZ\ZAZ.csproj">
-      <Project>{A2FF167D-B940-462A-9E7A-724C4F07F652}</Project>
-      <Name>ZAZ</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

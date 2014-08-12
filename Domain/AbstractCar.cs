@@ -13,13 +13,13 @@ namespace Domain
         private readonly AbstractPedal pedal;
         private readonly AbstractRudder rudder;
         private readonly AbstractTransmission transmission;
+        public double Speed;
 
         //состояния
         private int currentGear;
         private double currentRudderDegree;
         private bool headLight;
         private AbstractPanel panel;
-        public double Speed;
         private AbstractTank tank;
 
         public AbstractCar(AbstractEngine engine, AbstractPanel panel, AbstractPedal pedal, AbstractRudder rudder,

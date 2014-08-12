@@ -115,7 +115,7 @@ namespace Domain
 
         public int GetSpeed()
         {
-            return (int)car.Speed;
+            return (int) car.Speed;
         }
     }
 }

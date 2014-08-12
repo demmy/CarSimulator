@@ -1,23 +1,23 @@
 ﻿using System;
-using Interfaces.Parts;
-using ZAZ;
+using System.Collections.Generic;
+using BMW;
+using BMW.Parts;
 using Interfaces;
+using Interfaces.Parts;
 using Models;
 using NUnit.Framework;
-using ZAZ.Parts;
 
 namespace UnitTests
 {
-
     [TestFixture]
-    [Category("ZAZ")]
-    internal class Tests
+    [Category("BMW")]
+    internal class BMWTests
     {
 
 
         [Test]
         [Category("Creation")]
-        public void ShouldCreateNewCarWsParts()
+        public void ShouldCreateNewBmwCarWsBmwParts()
         {
             ICar car = new Car(new CarFactory());
 
@@ -78,7 +78,7 @@ namespace UnitTests
             }
 
             Assert.That(car.Engine.MaxSpeed, Is.EqualTo(car.CurrentSpeed));
-
+            
             for (int i = 0; i < 5000; i++)
             {
                 car.Break(100);

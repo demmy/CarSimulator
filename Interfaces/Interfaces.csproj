@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D6FDB521-6E37-40CB-AADD-D58802340CDC}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{0A2CDBAE-86E6-4022-96D3-995C965BE5AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsoleSimulator</RootNamespace>
-    <AssemblyName>ConsoleSimulator</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>Interfaces</RootNamespace>
+    <AssemblyName>Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,32 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="ICar.cs" />
+    <Compile Include="IFactory.cs" />
+    <Compile Include="Parts\EPanelData.cs" />
+    <Compile Include="Parts\IEngine.cs" />
+    <Compile Include="Parts\IPanel.cs" />
+    <Compile Include="Parts\IPedal.cs" />
+    <Compile Include="Parts\IRudder.cs" />
+    <Compile Include="Parts\ITank.cs" />
+    <Compile Include="Parts\ITransmission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ride.cs" />
-    <Compile Include="UIHelper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BMW\BMW.csproj">
-      <Project>{F34F667A-3F07-414D-8FBC-6D395360EC13}</Project>
-      <Name>BMW</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
-      <Project>{0a2cdbae-86e6-4022-96d3-995c965be5aa}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{CE8718B4-BC5D-40D2-9EFE-350127FECB40}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ZAZ\ZAZ.csproj">
-      <Project>{c817aae8-804f-4cb6-ba67-c6f79ab5dec0}</Project>
-      <Name>ZAZ</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Models
 {
     public enum Suppliers
     {
-        BMW = 1,
-        ZAZ = 2
+        Bmw = 1,
+        Zaz = 2
     }
 }

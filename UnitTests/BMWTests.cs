@@ -11,40 +11,8 @@ namespace UnitTests
 {
     [TestFixture]
     [Category("BMW")]
-    internal class BMWTests
+    internal class BmwTests
     {
-
-
-        [Test]
-        [Category("Creation")]
-        public void ShouldCreateNewBmwCarWsBmwParts()
-        {
-            ICar car = new Car(new CarFactory());
-
-            Assert.IsInstanceOf<Engine>(car.Engine);
-            Assert.IsInstanceOf<Panel>(car.Panel);
-            Assert.IsInstanceOf<Pedal>(car.Pedal);
-            Assert.IsInstanceOf<Rudder>(car.Rudder);
-            Assert.IsInstanceOf<Tank>(car.Tank);
-            Assert.IsInstanceOf<Transmission>(car.Transmission);
-        }
-
-        [Test]
-        [Category("Creation")]
-        public void ShouldReturnDefaultValues()
-        {
-            ICar car = new Car(new CarFactory());
-
-            Assert.That(0, Is.EqualTo(car.CurrentGear));
-            Assert.That(0, Is.EqualTo(car.CurrentRudderDegree));
-            Assert.That(0, Is.EqualTo(car.CurrentSpeed));
-            Assert.That(120, Is.EqualTo(car.Fuel));
-            Assert.That(250, Is.EqualTo(car.Engine.MaxSpeed));
-            Assert.That(5, Is.EqualTo(car.Pedal.Luft));
-            Assert.That(5, Is.EqualTo(car.Rudder.Luft));
-            Assert.That(6, Is.EqualTo(car.Transmission.MaxGear));
-        }
-
         [Test]
         [Category("Drive")]
         public void ShouldAsselerateAndBrakeControlledZeroAndMaxSpeed()
@@ -78,13 +46,77 @@ namespace UnitTests
             }
 
             Assert.That(car.Engine.MaxSpeed, Is.EqualTo(car.CurrentSpeed));
-            
+
             for (int i = 0; i < 5000; i++)
             {
                 car.Break(100);
             }
 
             Assert.That(0.0, Is.EqualTo(car.CurrentSpeed));
+        }
+
+        [Test]
+        [Category("Creation")]
+        public void ShouldCreateNewBmwCarWsBmwParts()
+        {
+            ICar car = new Car(new CarFactory());
+
+            Assert.IsInstanceOf<Engine>(car.Engine);
+            Assert.IsInstanceOf<Panel>(car.Panel);
+            Assert.IsInstanceOf<Pedal>(car.Pedal);
+            Assert.IsInstanceOf<Rudder>(car.Rudder);
+            Assert.IsInstanceOf<Tank>(car.Tank);
+            Assert.IsInstanceOf<Transmission>(car.Transmission);
+        }
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldHeadlightSwitch()
+        {
+            IFactory factory = new CarFactory();
+            var car = new Car(factory);
+
+            Assert.False(car.HeadLight);
+
+            car.LightSwitch();
+
+            Assert.True(car.HeadLight);
+
+            car.LightSwitch();
+
+            Assert.False(car.HeadLight);
+        }
+
+        [Test]
+        [Category("Creation")]
+        public void ShouldReturnDefaultValues()
+        {
+            ICar car = new Car(new CarFactory());
+
+            Assert.That(0, Is.EqualTo(car.CurrentGear));
+            Assert.That(0, Is.EqualTo(car.CurrentRudderDegree));
+            Assert.That(0, Is.EqualTo(car.CurrentSpeed));
+            Assert.That(120, Is.EqualTo(car.Fuel));
+            Assert.That(250, Is.EqualTo(car.Engine.MaxSpeed));
+            Assert.That(5, Is.EqualTo(car.Pedal.Luft));
+            Assert.That(5, Is.EqualTo(car.Rudder.Luft));
+            Assert.That(6, Is.EqualTo(car.Transmission.MaxGear));
+        }
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldReturnPanelDataSomeTypeNotNull()
+        {
+            IFactory factory = new CarFactory();
+            var car = new Car(factory);
+
+            Dictionary<EPanelData, string> report = car.PanelData();
+
+            foreach (var item in report)
+            {
+                Assert.IsInstanceOf<EPanelData>(item.Key);
+                Assert.IsInstanceOf<string>(item.Value);
+            }
         }
 
         [Test]
@@ -117,40 +149,5 @@ namespace UnitTests
             }
             Assert.That(car.Transmission.MaxGear, Is.EqualTo(car.CurrentGear));
         }
-
-        [Test]
-        [Category("Utility")]
-        public void ShouldHeadlightSwitch()
-        {
-            IFactory factory = new CarFactory();
-            var car = new Car(factory);
-
-            Assert.False(car.HeadLight);
-
-            car.LightSwitch();
-
-            Assert.True(car.HeadLight);
-
-            car.LightSwitch();
-
-            Assert.False(car.HeadLight);
-        }
-
-        [Test]
-        [Category("Utility")]
-        public void ShouldReturnPanelDataSomeTypeNotNull()
-        {
-            IFactory factory = new CarFactory();
-            var car = new Car(factory);
-
-            var report = car.PanelData();
-
-            foreach (var item in report)
-            {
-                Assert.IsInstanceOf<EPanelData>(item.Key);
-                Assert.IsInstanceOf<string>(item.Value);
-            }
-        }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Interfaces.Parts
+namespace Interfaces.Parts
 {
     public enum EPanelData
     {

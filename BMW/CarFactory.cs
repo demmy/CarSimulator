@@ -1,4 +1,4 @@
-﻿using BMW.Parts;
+using BMW.Parts;
 using Interfaces;
 using Interfaces.Parts;
 

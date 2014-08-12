@@ -1,4 +1,4 @@
-﻿using Interfaces;
+using Interfaces;
 using Interfaces.Parts;
 using ZAZ.Parts;
 

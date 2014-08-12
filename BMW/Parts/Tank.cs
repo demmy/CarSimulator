@@ -1,4 +1,4 @@
-﻿using Interfaces.Parts;
+using Interfaces.Parts;
 
 namespace BMW.Parts
 {

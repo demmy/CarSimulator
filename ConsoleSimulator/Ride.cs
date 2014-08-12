@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Interfaces;
 using Interfaces.Parts;
@@ -23,12 +23,12 @@ namespace ConsoleSimulator
                     "Повернуть направо",
                     "Данные с приборной панели",
                 };
-                if (Math.Abs(car.CurrentSpeed) < 0)
+                if (Math.Abs(car.CurrentSpeed) < 1)
                 {
                     menuMain.Add("Выход");
                 }
 
-                int choice = UiHelper.DrawMenu(menuMain);
+                var choice = UiHelper.DrawMenu(menuMain);
                 switch (choice)
                 {
                     case 1:

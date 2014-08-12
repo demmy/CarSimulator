@@ -39,13 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BMWFactory.cs" />
-    <Compile Include="Parts\BMWEngine.cs" />
-    <Compile Include="Parts\BMWPanel.cs" />
-    <Compile Include="Parts\BMWPedal.cs" />
-    <Compile Include="Parts\BMWRudder.cs" />
-    <Compile Include="Parts\BMWTank.cs" />
-    <Compile Include="Parts\BMWTransmission.cs" />
+    <Compile Include="CarFactory.cs" />
+    <Compile Include="Parts\Engine.cs" />
+    <Compile Include="Parts\Panel.cs" />
+    <Compile Include="Parts\Pedal.cs" />
+    <Compile Include="Parts\Rudder.cs" />
+    <Compile Include="Parts\Tank.cs" />
+    <Compile Include="Parts\Transmission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

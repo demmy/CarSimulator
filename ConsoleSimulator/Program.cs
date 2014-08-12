@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BMW;
 using Models;
 
 namespace ConsoleSimulator
@@ -33,6 +32,7 @@ namespace ConsoleSimulator
                         isExit = true;
                         break;
                     default:
+                        Console.WriteLine("Oops!");
                         break;
                 }
             } while (!isExit);
@@ -47,7 +47,10 @@ namespace ConsoleSimulator
             switch (supplier)
             {
                 case (int) Suppliers.BMW:
-                    car = new Car(new BMWFactory());
+                    car = new Car(new BMW.CarFactory());
+                    break;
+                case (int)Suppliers.ZAZ:
+                    car = new Car(new ZAZ.CarFactory());
                     break;
                 default:
                     return;

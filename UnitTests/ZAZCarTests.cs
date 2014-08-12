@@ -1,141 +1,156 @@
-﻿/*using System;
-using System.Collections.Generic;
-using Domain;
-using Domain.Parts;
+﻿using System;
+using Interfaces.Parts;
+using ZAZ;
+using Interfaces;
+using Models;
 using NUnit.Framework;
-using ZAZ;*/
+using ZAZ.Parts;
 
 namespace UnitTests
 {
-/*    [TestFixture]
-    [Category("ZAZCar")]
-    public class ZAZCarTest
+
+    [TestFixture]
+    [Category("ZAZ")]
+    internal class Tests
     {
+
+
+        [Test]
+        [Category("Creation")]
+        public void ShouldCreateNewCarWsParts()
+        {
+            ICar car = new Car(new CarFactory());
+
+            Assert.IsInstanceOf<Engine>(car.Engine);
+            Assert.IsInstanceOf<Panel>(car.Panel);
+            Assert.IsInstanceOf<Pedal>(car.Pedal);
+            Assert.IsInstanceOf<Rudder>(car.Rudder);
+            Assert.IsInstanceOf<Tank>(car.Tank);
+            Assert.IsInstanceOf<Transmission>(car.Transmission);
+        }
+
+        [Test]
+        [Category("Creation")]
+        public void ShouldReturnDefaultValues()
+        {
+            ICar car = new Car(new CarFactory());
+
+            Assert.That(0, Is.EqualTo(car.CurrentGear));
+            Assert.That(0, Is.EqualTo(car.CurrentRudderDegree));
+            Assert.That(0, Is.EqualTo(car.CurrentSpeed));
+            Assert.That(120, Is.EqualTo(car.Fuel));
+            Assert.That(250, Is.EqualTo(car.Engine.MaxSpeed));
+            Assert.That(5, Is.EqualTo(car.Pedal.Luft));
+            Assert.That(5, Is.EqualTo(car.Rudder.Luft));
+            Assert.That(6, Is.EqualTo(car.Transmission.MaxGear));
+        }
+
         [Test]
         [Category("Drive")]
-        public void ShouldAccelerateAndBreak()
+        public void ShouldAsselerateAndBrakeControlledZeroAndMaxSpeed()
         {
-            // MagicNumbers in Assert:
-            // double ZAZFullStep = 10d * ((100d - 15d)/100d); //8.5
-            // double ZAZHalfStep = 10d * ((50d - 15d) / 100d); //3.5
-
-            IFactory factory = new ZAZFactory();
-            var car = new Car(factory);
+            ICar car = new Car(new CarFactory());
 
             car.Accelerate(100);
             car.Accelerate(100);
+
+            Assert.That(19d, Is.EqualTo(car.CurrentSpeed));
+
+            car.Break(100);
+
+            Assert.That(9.5d, Is.EqualTo(car.CurrentSpeed));
+
+            car.Break(100);
+
+            Assert.That(0.0, Is.EqualTo(car.CurrentSpeed));
+
+            car.Accelerate(50);
+            car.Accelerate(50);
+            car.Accelerate(50);
             car.Accelerate(50);
 
-            Dictionary<PanelData, string> report = car.Panel();
+            Assert.That(18d, Is.EqualTo(car.CurrentSpeed));
 
-            Assert.That("20,5", Is.EqualTo(report[PanelData.Speed]));
 
-            car.PressBreak(100);
-            report = car.Panel();
-            Assert.That("12", Is.EqualTo(report[PanelData.Speed]));
-
-            car.PressBreak(50);
-            report = car.Panel();
-            Assert.That("8,5", Is.EqualTo(report[PanelData.Speed]));
-
-            car.PressBreak(100);
-            report = car.Panel();
-            Assert.That("0", Is.EqualTo(report[PanelData.Speed]));
-        }
-
-        [Test]
-        public void ShouldCreateZAZCarVsDefaultData()
-        {
-            IFactory factory = new ZAZFactory();
-            var car = new Car(factory);
-
-            Dictionary<PanelData, string> report = car.Panel();
-
-            Assert.That(report[PanelData.Type], Is.EqualTo(typeof (ZAZCar).Name));
-            Assert.That(report[PanelData.Speed], Is.EqualTo(0.ToString()));
-            Assert.That(report[PanelData.Fuel], Is.EqualTo(80.ToString()));
-            Assert.That(report[PanelData.Degree], Is.EqualTo(0.ToString()));
-            Assert.That(report[PanelData.Gear], Is.EqualTo(0.ToString()));
-            Assert.That(report[PanelData.Light], Is.EqualTo("False"));
-            Assert.That(report[PanelData.MaxSpeed], Is.EqualTo(180.ToString()));
-            Assert.That(report[PanelData.RudderLuft], Is.EqualTo(10.ToString()));
-            Assert.That(report[PanelData.MaxGear], Is.EqualTo(4.ToString()));
-        }
-
-        [Test]
-        [Category("Drive")]
-        public void ShouldHeadlightSwitch()
-        {
-            IFactory factory = new ZAZFactory();
-            var car = new Car(factory);
-            Dictionary<PanelData, string> report = car.Panel();
-
-            Assert.That("False", Is.EqualTo(report[PanelData.Light]));
-            car.LightSwitch();
-            report = car.Panel();
-            Assert.That("True", Is.EqualTo(report[PanelData.Light]));
-        }
-
-        [Test]
-        [Category("Drive")]
-        public void ShouldStopOnMaxSpeedAndStop()
-        {
-            IFactory factory = new ZAZFactory();
-            var car = new Car(factory);
-            Dictionary<PanelData, string> report = car.Panel();
-
-            // 1000 раз жмем тормоз на полную
-            for (int i = 0; i < 100; i++)
-            {
-                car.PressBreak(100);
-            }
-
-            report = car.Panel();
-            Assert.That("0", Is.EqualTo(report[PanelData.Speed]));
-
-            // 1000 раз жмем газ на полную
             for (int i = 0; i < 1000; i++)
             {
                 car.Accelerate(100);
             }
-            report = car.Panel();
-            Assert.That(report[PanelData.MaxSpeed], Is.EqualTo(report[PanelData.Speed]));
+
+            Assert.That(car.Engine.MaxSpeed, Is.EqualTo(car.CurrentSpeed));
+
+            for (int i = 0; i < 5000; i++)
+            {
+                car.Break(100);
+            }
+
+            Assert.That(0.0, Is.EqualTo(car.CurrentSpeed));
         }
 
         [Test]
         [Category("Drive")]
         public void ShouldThrowErrorWhenPressValueIncorrect()
         {
-            IFactory factory = new ZAZFactory();
+            IFactory factory = new CarFactory();
             var car = new Car(factory);
             Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(120));
             Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(-10));
-            Assert.Throws<ArgumentOutOfRangeException>(() => car.PressBreak(120));
-            Assert.Throws<ArgumentOutOfRangeException>(() => car.PressBreak(-10));
+            Assert.Throws<ArgumentOutOfRangeException>(() => car.Break(120));
+            Assert.Throws<ArgumentOutOfRangeException>(() => car.Break(-10));
         }
 
         [Test]
-        [Category("Drive")]
+        [Category("Utility")]
         public void ShouldTransmissionChangedInRange()
         {
-            IFactory factory = new ZAZFactory();
+            IFactory factory = new CarFactory();
             var car = new Car(factory);
-            Dictionary<PanelData, string> report = car.Panel();
-
-            Assert.That("0", Is.EqualTo(report[PanelData.Gear]));
 
             //понижаем передачу ниже нулевой
             car.GearDown();
-            report = car.Panel();
-            Assert.That("0", Is.EqualTo(report[PanelData.Gear]));
+            Assert.That(0, Is.EqualTo(car.CurrentGear));
 
             //повышаем передачу 100 раз
             for (int i = 0; i < 100; i++)
             {
                 car.GearUp();
             }
-            report = car.Panel();
-            Assert.That(report[PanelData.MaxGear], Is.EqualTo(report[PanelData.Gear]));
+            Assert.That(car.Transmission.MaxGear, Is.EqualTo(car.CurrentGear));
         }
-    }*/
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldHeadlightSwitch()
+        {
+            IFactory factory = new CarFactory();
+            var car = new Car(factory);
+
+            Assert.False(car.HeadLight);
+
+            car.LightSwitch();
+
+            Assert.True(car.HeadLight);
+
+            car.LightSwitch();
+
+            Assert.False(car.HeadLight);
+        }
+
+        [Test]
+        [Category("Utility")]
+        public void ShouldReturnPanelDataSomeTypeNotNull()
+        {
+            IFactory factory = new CarFactory();
+            var car = new Car(factory);
+
+            var report = car.PanelData();
+
+            foreach (var item in report)
+            {
+                Assert.IsInstanceOf<EPanelData>(item.Key);
+                Assert.IsInstanceOf<string>(item.Value);
+            }
+        }
+
+    }
 }

@@ -4,36 +4,36 @@ using Interfaces.Parts;
 
 namespace BMW
 {
-    public class BMWFactory : IFactory
+    public class CarFactory : IFactory
     {
         public IEngine CreatEngine()
         {
-            return new BMWEngine();
+            return new Engine();
         }
 
         public IPanel CreatePanel()
         {
-            return new BMWPanel();
+            return new Panel();
         }
 
         public IPedal CreatePedal()
         {
-            return new BMWPedal();
+            return new Pedal();
         }
 
         public IRudder CreateRudder()
         {
-            return new BMWRudder();
+            return new Rudder();
         }
 
         public ITank CreateTank()
         {
-            return new BMWTank();
+            return new Tank();
         }
 
         public ITransmission CreateTransmission()
         {
-            return new BMWTransmission();
+            return new Transmission();
         }
     }
 }

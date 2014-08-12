@@ -19,21 +19,21 @@ namespace UnitTests
         [Category("Creation")]
         public void ShouldCreateNewBmwCarWsBmwParts()
         {
-            ICar car = new Car(new BMWFactory());
+            ICar car = new Car(new CarFactory());
 
-            Assert.IsInstanceOf<BMWEngine>(car.Engine);
-            Assert.IsInstanceOf<BMWPanel>(car.Panel);
-            Assert.IsInstanceOf<BMWPedal>(car.Pedal);
-            Assert.IsInstanceOf<BMWRudder>(car.Rudder);
-            Assert.IsInstanceOf<BMWTank>(car.Tank);
-            Assert.IsInstanceOf<BMWTransmission>(car.Transmission);
+            Assert.IsInstanceOf<Engine>(car.Engine);
+            Assert.IsInstanceOf<Panel>(car.Panel);
+            Assert.IsInstanceOf<Pedal>(car.Pedal);
+            Assert.IsInstanceOf<Rudder>(car.Rudder);
+            Assert.IsInstanceOf<Tank>(car.Tank);
+            Assert.IsInstanceOf<Transmission>(car.Transmission);
         }
 
         [Test]
         [Category("Creation")]
         public void ShouldReturnDefaultValues()
         {
-            ICar car = new Car(new BMWFactory());
+            ICar car = new Car(new CarFactory());
 
             Assert.That(0, Is.EqualTo(car.CurrentGear));
             Assert.That(0, Is.EqualTo(car.CurrentRudderDegree));
@@ -49,7 +49,7 @@ namespace UnitTests
         [Category("Drive")]
         public void ShouldAsselerateAndBrakeControlledZeroAndMaxSpeed()
         {
-            ICar car = new Car(new BMWFactory());
+            ICar car = new Car(new CarFactory());
 
             car.Accelerate(100);
             car.Accelerate(100);
@@ -91,7 +91,7 @@ namespace UnitTests
         [Category("Drive")]
         public void ShouldThrowErrorWhenPressValueIncorrect()
         {
-            IFactory factory = new BMWFactory();
+            IFactory factory = new CarFactory();
             var car = new Car(factory);
             Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(120));
             Assert.Throws<ArgumentOutOfRangeException>(() => car.Accelerate(-10));
@@ -103,7 +103,7 @@ namespace UnitTests
         [Category("Utility")]
         public void ShouldTransmissionChangedInRange()
         {
-            IFactory factory = new BMWFactory();
+            IFactory factory = new CarFactory();
             var car = new Car(factory);
 
             //понижаем передачу ниже нулевой
@@ -122,7 +122,7 @@ namespace UnitTests
         [Category("Utility")]
         public void ShouldHeadlightSwitch()
         {
-            IFactory factory = new BMWFactory();
+            IFactory factory = new CarFactory();
             var car = new Car(factory);
 
             Assert.False(car.HeadLight);
@@ -140,7 +140,7 @@ namespace UnitTests
         [Category("Utility")]
         public void ShouldReturnPanelDataSomeTypeNotNull()
         {
-            IFactory factory = new BMWFactory();
+            IFactory factory = new CarFactory();
             var car = new Car(factory);
 
             var report = car.PanelData();

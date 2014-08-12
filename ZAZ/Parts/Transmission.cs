@@ -1,10 +1,10 @@
 ﻿using Interfaces.Parts;
 
-namespace BMW.Parts
+namespace ZAZ.Parts
 {
-    public class BMWTransmission : ITransmission
+    public class Transmission : ITransmission
     {
-        public BMWTransmission()
+        public Transmission()
         {
             MaxGear = 6;
         }

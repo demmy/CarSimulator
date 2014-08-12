@@ -1,10 +1,10 @@
 ﻿using Interfaces.Parts;
 
-namespace BMW.Parts
+namespace ZAZ.Parts
 {
-    public class BMWTank : ITank
+    public class Tank : ITank
     {
-        public BMWTank()
+        public Tank()
         {
             Capacity = 120;
         }

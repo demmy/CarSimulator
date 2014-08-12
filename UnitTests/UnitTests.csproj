@@ -62,6 +62,10 @@
       <Project>{ce8718b4-bc5d-40d2-9efe-350127fecb40}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ZAZ\ZAZ.csproj">
+      <Project>{c817aae8-804f-4cb6-ba67-c6f79ab5dec0}</Project>
+      <Name>ZAZ</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

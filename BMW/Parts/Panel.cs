@@ -2,7 +2,7 @@
 
 namespace BMW.Parts
 {
-    public class BMWPanel : IPanel
+    public class Panel : IPanel
     {
         public string Name { get; set; }
         public string Speed { get; set; }

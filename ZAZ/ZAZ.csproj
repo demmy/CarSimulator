@@ -39,8 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Parts\Engine.cs" />
+    <Compile Include="Parts\Panel.cs" />
+    <Compile Include="Parts\Pedal.cs" />
+    <Compile Include="Parts\Rudder.cs" />
+    <Compile Include="Parts\Tank.cs" />
+    <Compile Include="Parts\Transmission.cs" />
+    <Compile Include="CarFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{0A2CDBAE-86E6-4022-96D3-995C965BE5AA}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

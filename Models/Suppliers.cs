@@ -8,6 +8,7 @@ namespace Models
 {
     public enum Suppliers
     {
-        BMW = 1
+        BMW = 1,
+        ZAZ = 2
     }
 }

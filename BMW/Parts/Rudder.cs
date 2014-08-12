@@ -2,9 +2,9 @@
 
 namespace BMW.Parts
 {
-    public class BMWRudder : IRudder
+    public class Rudder : IRudder
     {
-        public BMWRudder()
+        public Rudder()
         {
             Luft = 5;
         }

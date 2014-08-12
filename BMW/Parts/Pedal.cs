@@ -2,9 +2,9 @@
 
 namespace BMW.Parts
 {
-    public class BMWPedal : IPedal
+    public class Pedal : IPedal
     {
-        public BMWPedal()
+        public Pedal()
         {
             Luft = 5;
         }

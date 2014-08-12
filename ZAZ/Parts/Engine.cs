@@ -1,10 +1,10 @@
 ﻿using Interfaces.Parts;
 
-namespace BMW.Parts
+namespace ZAZ.Parts
 {
-    public class BMWEngine : IEngine
+    public class Engine : IEngine
     {
-        public BMWEngine()
+        public Engine()
         {
             MaxSpeed = 250;
         }

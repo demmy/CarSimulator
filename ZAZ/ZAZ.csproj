@@ -50,9 +50,9 @@
     <Compile Include="ZAZFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{6f57a268-2757-40a3-b8be-3d14e357dd54}</Project>
-      <Name>Domain</Name>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{0a2cdbae-86e6-4022-96d3-995c965be5aa}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

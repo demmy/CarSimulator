@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Interfaces.Parts;
 
 namespace Interfaces
 {
-    interface ICar
+    public interface ICar
     {
+        string Name { get; set; }
+
         IEngine Engine { get; }
         IPanel Panel { get; }
         IPedal Pedal { get; }
@@ -29,5 +27,7 @@ namespace Interfaces
         void TurnRight(int degree);
 
         void LightSwitch();
+
+        Dictionary<EPanelData, string> PanelData();
     }
 }

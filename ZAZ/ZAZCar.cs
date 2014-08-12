@@ -1,7 +1,4 @@
-﻿using Domain;
-using Domain.Parts;
-
-namespace ZAZ
+﻿namespace ZAZ
 {
     public class ZAZCar : AbstractCar
     {

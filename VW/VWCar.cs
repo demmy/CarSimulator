@@ -1,7 +1,4 @@
-﻿using Domain;
-using Domain.Parts;
-
-namespace VW
+﻿namespace VW
 {
     public class VWCar : AbstractCar
     {

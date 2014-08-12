@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A2CDBAE-86E6-4022-96D3-995C965BE5AA}</ProjectGuid>
+    <ProjectGuid>{CE8718B4-BC5D-40D2-9EFE-350127FECB40}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Interfaces</RootNamespace>
-    <AssemblyName>Interfaces</AssemblyName>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,18 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICar.cs" />
-    <Compile Include="IFactory.cs" />
-    <Compile Include="Parts\EPanelData.cs" />
-    <Compile Include="Parts\IEngine.cs" />
-    <Compile Include="Parts\IPanel.cs" />
-    <Compile Include="Parts\IPedal.cs" />
-    <Compile Include="Parts\IRudder.cs" />
-    <Compile Include="Parts\ITank.cs" />
-    <Compile Include="Parts\ITransmission.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{0a2cdbae-86e6-4022-96d3-995c965be5aa}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

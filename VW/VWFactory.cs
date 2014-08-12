@@ -1,6 +1,4 @@
-﻿using Domain;
-using Domain.Parts;
-using VW.Parts;
+﻿using VW.Parts;
 
 namespace VW
 {

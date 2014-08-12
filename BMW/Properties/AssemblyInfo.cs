@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 
-[assembly: AssemblyTitle("Interfaces")]
+[assembly: AssemblyTitle("BMW")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Interfaces")]
+[assembly: AssemblyProduct("BMW")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
 
-[assembly: Guid("36458cd6-a1c3-47bb-a9bf-8c5b0ecc11ec")]
+[assembly: Guid("a1845cf8-ada8-4b38-bbce-cc20fdbec83f")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

@@ -1,6 +1,4 @@
-﻿using Domain.Parts;
-
-namespace ZAZ.Parts
+﻿namespace ZAZ.Parts
 {
     internal class ZAZPedal : AbstractPedal
     {

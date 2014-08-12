@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Interfaces.Parts;
 
 namespace Interfaces
 {
-    interface IFactory
+    public interface IFactory
     {
-        ICar CreateCar();
+        IEngine CreatEngine();
+        IPanel CreatePanel();
+        IPedal CreatePedal();
+        IRudder CreateRudder();
+        ITank CreateTank();
+        ITransmission CreateTransmission();
     }
 }

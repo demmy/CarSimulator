@@ -42,30 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BMWTests.cs" />
     <Compile Include="VWCarTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZAZCarTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleSimulator\ConsoleSimulator.csproj">
-      <Project>{d6fdb521-6e37-40cb-aadd-d58802340cdc}</Project>
-      <Name>ConsoleSimulator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{6f57a268-2757-40a3-b8be-3d14e357dd54}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VW\VW.csproj">
-      <Project>{c1e77f93-f223-4038-8af8-ba44c1bcf609}</Project>
-      <Name>VW</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ZAZ\ZAZ.csproj">
-      <Project>{a2ff167d-b940-462a-9e7a-724c4f07f652}</Project>
-      <Name>ZAZ</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\BMW\BMW.csproj">
+      <Project>{F34F667A-3F07-414D-8FBC-6D395360EC13}</Project>
+      <Name>BMW</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{0A2CDBAE-86E6-4022-96D3-995C965BE5AA}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{ce8718b4-bc5d-40d2-9efe-350127fecb40}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

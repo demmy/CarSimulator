@@ -1,6 +1,4 @@
-﻿using Domain;
-using Domain.Parts;
-using ZAZ.Parts;
+﻿using ZAZ.Parts;
 
 namespace ZAZ
 {

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interfaces.Parts
+﻿namespace Interfaces.Parts
 {
-    interface IPanel
+    public interface IPanel
     {
-        string Type { get; }
-        string Speed { get; }
-        string Fuel { get; }
-        string Degree { get; }
-        string Gear { get; }
-        string Light { get; }
-        string MaxSpeed { get; }
-        string MaxGear { get; }
-        string PedalLuft { get; }
-        string RudderLuft { get; }
+        string Name { get; set; }
+        string Speed { get; set; }
+        string Fuel { get; set; }
+        string Degree { get; set; }
+        string Gear { get; set; }
+        string Light { get; set; }
+        string MaxSpeed { get; set; }
+        string MaxGear { get; set; }
+        string PedalLuft { get; set; }
+        string RudderLuft { get; set; }
     }
 }

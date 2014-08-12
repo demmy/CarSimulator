@@ -1,13 +1,13 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using Domain;
 using Domain.Parts;
 using NUnit.Framework;
-using VW;
+using VW;*/
 
 namespace UnitTests
 {
-    [TestFixture]
+/*    [TestFixture]
     [Category("VWCar")]
     public class VWCarTest
     {
@@ -137,5 +137,5 @@ namespace UnitTests
             report = car.Panel();
             Assert.That(report[PanelData.MaxGear], Is.EqualTo(report[PanelData.Gear]));
         }
-    }
+    }*/
 }

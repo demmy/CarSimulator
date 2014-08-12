@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain;
 
 namespace ConsoleSimulator
@@ -14,7 +11,7 @@ namespace ConsoleSimulator
             bool isEnd = false;
             do
             {
-                var menuMain = new List<string>()
+                var menuMain = new List<string>
                 {
                     "Нажать газ",
                     "Нажать тормоз",
@@ -25,7 +22,7 @@ namespace ConsoleSimulator
                     "Повернуть направо",
                     "Данные с приборной панели",
                 };
-                if (car.GetSpeed()==0)
+                if (car.GetSpeed() == 0)
                 {
                     menuMain.Add("Выход");
                 }
@@ -56,7 +53,6 @@ namespace ConsoleSimulator
                         Console.WriteLine("OOPS!");
                         break;
                 }
-
             } while (!isEnd);
         }
     }

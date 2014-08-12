@@ -1,6 +1,4 @@
-﻿using Domain.Parts;
-
-namespace VW.Parts
+﻿namespace VW.Parts
 {
     internal class VWRudder : AbstractRudder
     {
